@@ -52,10 +52,12 @@ void show(perso **t){
 	char *titre[] = {"nom","pv","armure","attaque","mana"};
 	printf("\n");
 	printf("------------------------------------------------------------------\n");
-	printf("| %*s | %*s | %*s | %*s | %*s |\n", -10, titre[0],10,titre[1],10,titre[2],10,titre[3],10,titre[4]);
+	printf("| %*s | %*s | %*s | %*s | %*s |\n",
+	-10, titre[0],10,titre[1],10,titre[2],10,titre[3],10,titre[4]);
 	printf("------------------------------------------------------------------\n");
 	while(t[i] != NULL){
-		printf("| %-10s | %10d | %10d | %10d | %10d |\n", t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana);
+		printf("| %-10s | %10d | %10d | %10d | %10d |\n",
+		t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana);
 		i++;
 	}
 	printf("------------------------------------------------------------------\n");
