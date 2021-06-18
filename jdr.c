@@ -1,13 +1,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define _FLUSH while(getchar()!='\n')
-#define MAX -10
+#define _FLUSH while(getchar()!='\n');
+
 // les infos sur les perso
 typedef struct perso {
 	char* nom;
 	int maxPV;
 	int armure;
+	int degat;
 	int mana;
 } perso;
 
@@ -16,7 +17,7 @@ int scan(char* s){
 	int buff;
 	printf("%s",s);
 	while(scanf("%d",&buff) == 0){
-		_FLUSH;
+		_FLUSH
 		printf("%s",s);
 	}
 	return buff;
@@ -25,10 +26,11 @@ int scan(char* s){
 // demande les infos d'un perso
 void ask(perso *p){
 	printf("\tnom    : ");
-	p->nom = malloc(200); _FLUSH; fgets(p->nom, 200, stdin);
+	p->nom = malloc(200); _FLUSH fgets(p->nom, 200, stdin);
 	p->nom[strlen(p->nom)-1] = '\0';
 	p->maxPV  = scan("\tpv     : ");
 	p->armure = scan("\tarmure : ");
+	p->degat  = scan("\tdegat  : ");
 	p->mana   = scan("\tmana   : ");
 }
 
@@ -47,16 +49,16 @@ perso** init(){
 // affiche les perso
 void show(perso **t){
 	int i = 0;
-	char *titre[] = {"nom","pv","armure","mana"};
+	char *titre[] = {"nom","pv","armure","attaque","mana"};
 	printf("\n");
-	printf("-----------------------------------------------------\n");
-	printf("| %*s | %*s | %*s | %*s |\n", MAX, titre[0],-MAX,titre[1],-MAX,titre[2],-MAX,titre[3]);
-	printf("-----------------------------------------------------\n");
+	printf("------------------------------------------------------------------\n");
+	printf("| %*s | %*s | %*s | %*s | %*s |\n", -10, titre[0],10,titre[1],10,titre[2],10,titre[3],10,titre[4]);
+	printf("------------------------------------------------------------------\n");
 	while(t[i] != NULL){
-		printf("| %-10s | %10d | %10d | %10d |\n", t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->mana);
+		printf("| %-10s | %10d | %10d | %10d | %10d |\n", t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana);
 		i++;
 	}
-	printf("-----------------------------------------------------\n");
+	printf("------------------------------------------------------------------\n");
 }
 
 int main(){
