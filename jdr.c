@@ -3,6 +3,6 @@
 #include<string.h>
 
 int main(){
-	printf("Here we go again...\n");
+	printf("What to do ?\n");
 	return 0;
 }
