@@ -50,10 +50,10 @@ void show(perso **t){
 	char *titre[] = {"nom","pv","armure","mana"};
 	printf("\n");
 	printf("-----------------------------------------------------\n");
-	printf("| %*s | %*s | %*s | %*s |\n", MAX, titre[0],MAX,titre[1],MAX,titre[2],MAX,titre[3]);
+	printf("| %*s | %*s | %*s | %*s |\n", MAX, titre[0],-MAX,titre[1],-MAX,titre[2],-MAX,titre[3]);
 	printf("-----------------------------------------------------\n");
 	while(t[i] != NULL){
-		printf("| %*s | %*d | %*d | %*d |\n",MAX, t[i]->nom,MAX,t[i]->maxPV,MAX,t[i]->armure,MAX,t[i]->mana);
+		printf("| %-10s | %10d | %10d | %10d |\n", t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->mana);
 		i++;
 	}
 	printf("-----------------------------------------------------\n");
