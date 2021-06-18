@@ -2,7 +2,7 @@
 #include<stdlib.h>
 #include<string.h>
 #define _FLUSH while(getchar()!='\n')
-
+#define MAX -10
 // les infos sur les perso
 typedef struct perso {
 	char* nom;
@@ -47,15 +47,16 @@ perso** init(){
 // affiche les perso
 void show(perso **t){
 	int i = 0;
+	char *titre[] = {"nom","pv","armure","mana"};
 	printf("\n");
-	printf("-----------------------------------------------------------------\n");
-	printf("| nom\t\t| pv\t\t| armure\t| mana\t\t|\n");
-	printf("-----------------------------------------------------------------\n");
+	printf("-----------------------------------------------------\n");
+	printf("| %*s | %*s | %*s | %*s |\n", MAX, titre[0],MAX,titre[1],MAX,titre[2],MAX,titre[3]);
+	printf("-----------------------------------------------------\n");
 	while(t[i] != NULL){
-		printf("| %s\t\t| %d\t\t| %d\t\t| %d\t\t|\n",t[i]->nom,t[i]->maxPV,t[i]->armure,t[i]->mana);
+		printf("| %*s | %*d | %*d | %*d |\n",MAX, t[i]->nom,MAX,t[i]->maxPV,MAX,t[i]->armure,MAX,t[i]->mana);
 		i++;
 	}
-	printf("-----------------------------------------------------------------\n");
+	printf("-----------------------------------------------------\n");
 }
 
 int main(){
