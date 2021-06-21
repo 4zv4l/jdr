@@ -1,11 +1,9 @@
-#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "pkg/stats.c"
 #include "pkg/show.c"
 #define _FLUSH while(getchar()!='\n');
 
-// scan pour un entier
+// scan pour un int
 int scan(char* s){
 	int buff;
 	printf("%s",s);
@@ -13,12 +11,12 @@ int scan(char* s){
 		_FLUSH
 		printf("%s",s);
 	}
-	_FLUSH 
+	_FLUSH
 	return buff;
 }
 
 // demande les infos d'un perso
-void ask(intel *p){
+void ask(perso *p){
 	printf("\tnom    : ");
 	p->nom = malloc(25); fgets(p->nom, 12, stdin);
 	if(p->nom[strlen(p->nom)-1] != '\n')
@@ -31,9 +29,9 @@ void ask(intel *p){
 }
 
 // créer les perso
-intel** init(){
+perso** init(){
 	int nPlayer = scan("How many players : ");
-	intel **p = malloc(sizeof(intel)*nPlayer);
+	perso **p = malloc(sizeof(intel)*nPlayer);
 	for(int i = 0; i < nPlayer; i++){
 		printf("perso %d\t:\n",i+1);
 		p[i] = malloc(sizeof(intel));
@@ -43,7 +41,7 @@ intel** init(){
 }
 
 int main(){
-	intel **team = init();
+	perso **team = init();
 	show_team(team);
 	show_intel(intel_mobs);
 	show_semi(semi_mobs);

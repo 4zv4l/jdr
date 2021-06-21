@@ -1,5 +1,7 @@
+#include "stats.h"
+
 // affiche les perso
-void show_team(intel **t){
+void show_team(perso **t){
 	int i = 0;
 	char *titre[] = {"nom","pv","armure","attaque","mana"};
 	printf("\n");
@@ -56,7 +58,7 @@ void show_idiot(idiot t[]){
 	printf("\n");
 	printf("----------------------------------------\n");
 	printf("| %*s | %*s | %*s |\n",
-	-10, titre[0],10,titre[1],10,titre[2],10);
+	-10, titre[0],10,titre[1],10,titre[2]);
 	printf("----------------------------------------\n");
 	while(t[i].maxPV != 0){
 		printf("| %-10s | %10d | %10d |\n",

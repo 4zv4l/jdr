@@ -1,6 +1,17 @@
+#include<stdio.h>
+
+// stats intelligent
+typedef struct perso{
+	char* nom;
+	int maxPV;
+	int armure;
+	int degat;
+	int mana;
+} perso;
+
 // stats intelligent
 typedef struct intel{
-	char* nom;
+	const char* nom;
 	int maxPV;
 	int armure;
 	int degat;
@@ -9,7 +20,7 @@ typedef struct intel{
 
 // stats semi semi
 typedef struct semi{
-	char* nom;
+	const char* nom;
 	int maxPV;
 	int armure;
 	int degat;
@@ -17,7 +28,7 @@ typedef struct semi{
 
 // stats semi idiot
 typedef struct idiot{
-	char* nom;
+	const char* nom;
 	int maxPV;
 	int degat;
 } idiot;
