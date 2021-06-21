@@ -1,16 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include "struct.c"
 #define _FLUSH while(getchar()!='\n');
-
-// les infos sur les perso
-typedef struct perso {
-	char* nom;
-	int maxPV;
-	int armure;
-	int degat;
-	int mana;
-} perso;
 
 // scan pour un entier
 int scan(char* s){
