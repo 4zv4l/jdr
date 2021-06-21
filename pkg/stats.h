@@ -38,6 +38,7 @@ static intel intel_mobs[] = {
     /* nom      pv     armure     attaque       mana*/
     {"golblin", 5,     5,         5,            5},
     {"cyclope", 15,    10,        10,           2},
+    {"elf",     10,    8,         10,           10},
     // ajouter
 };
 
@@ -45,6 +46,7 @@ static semi semi_mobs[] = {
     /* nom      pv     armure     attaque*/
     {"chien",   5,     0,         7},
     {"loup",    10,    0,         10},
+    {"vache",   15,    0,         2},
     // ajouter
 };
 
