@@ -13,13 +13,16 @@ int scan(char* s){
 		_FLUSH
 		printf("%s",s);
 	}
+	_FLUSH 
 	return buff;
 }
 
 // demande les infos d'un perso
 void ask(intel *p){
 	printf("\tnom    : ");
-	p->nom = malloc(200); _FLUSH fgets(p->nom, 200, stdin);
+	p->nom = malloc(25); fgets(p->nom, 12, stdin);
+	if(p->nom[strlen(p->nom)-1] != '\n')
+		_FLUSH
 	p->nom[strlen(p->nom)-1] = '\0';
 	p->maxPV  = scan("\tpv     : ");
 	p->armure = scan("\tarmure : ");
