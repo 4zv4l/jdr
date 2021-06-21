@@ -1,9 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "struct.c"
-#include "stats.c"
-#include "show.c"
+#include "pkg/stats.c"
+#include "pkg/show.c"
 #define _FLUSH while(getchar()!='\n');
 
 // scan pour un entier
