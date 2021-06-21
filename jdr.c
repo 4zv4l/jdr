@@ -3,7 +3,9 @@
 #include "pkg/show.c"
 #define _FLUSH while(getchar()!='\n');
 
-// scan pour un int
+// scan pour un int + gestion des erreurs
+//
+// return la valeur obtenu
 int scan(char* s){
 	int buff;
 	printf("%s",s);
@@ -16,9 +18,11 @@ int scan(char* s){
 }
 
 // demande les infos d'un perso
+//
+// prend comme argument un pointeur vers un perso
 void ask(perso *p){
 	printf("\tnom    : ");
-	p->nom = malloc(25); fgets(p->nom, 12, stdin);
+	p->nom = malloc(NAME_LENGHT); fgets(p->nom, NAME_LENGHT, stdin);
 	if(p->nom[strlen(p->nom)-1] != '\n')
 		_FLUSH
 	p->nom[strlen(p->nom)-1] = '\0';
@@ -29,6 +33,8 @@ void ask(perso *p){
 }
 
 // créer les perso
+//
+// return un tableau de pointeurs
 perso** init(){
 	int nPlayer = scan("How many players : ");
 	perso **p = malloc(sizeof(intel)*nPlayer);

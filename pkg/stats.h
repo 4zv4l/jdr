@@ -33,7 +33,7 @@ typedef struct idiot{
 	int degat;
 } idiot;
 
-// semi-intélligent stats
+// mobs intel
 static intel intel_mobs[] = {
     /* nom      pv     armure     attaque       mana*/
     {"golblin", 5,     5,         5,            5},
@@ -42,6 +42,7 @@ static intel intel_mobs[] = {
     // ajouter
 };
 
+// mobs semi-intel
 static semi semi_mobs[] = {
     /* nom      pv     armure     attaque*/
     {"chien",   5,     0,         7},
@@ -50,6 +51,7 @@ static semi semi_mobs[] = {
     // ajouter
 };
 
+// mobs 白痴
 static idiot idiot_mobs[] = {
     /* nom          pv   attaque*/
     {"pain",        5,   7},
