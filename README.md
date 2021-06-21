@@ -7,3 +7,9 @@ aide pour jeu de rôle
 
 ## show.c
 affiche les personnages et mobs dans un tableau
+
+# TODO
++ ajouter des mobs
++ mettre les bonnes caractéristiques aux mobs
++ tour par tour
++ gérer les attaques/défenses/autres
