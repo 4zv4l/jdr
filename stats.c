@@ -1,3 +1,2 @@
-char *goblin[] = {
-    
+char *goblin[] = {    
 };
