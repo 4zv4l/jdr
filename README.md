@@ -18,4 +18,6 @@ affiche les personnages et mobs dans un tableau
 - [ ] gérer les attaques/défenses/autres
 
 # To compile
+`make`
+or
 `gcc main.c f.c stats.c`
