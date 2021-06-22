@@ -29,6 +29,6 @@ int main(){
 	//show_idiot(idiot_mobs);
 	set_order(team);
 	team_round(team);
-	//free(team);
+	free(team);
 	return 0;
 }

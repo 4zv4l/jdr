@@ -50,22 +50,39 @@ perso** init(){
 	return p;
 }
 
+// ask for a name and return the index of this one
+int askName(perso** t, char* s){
+	int i = 0;
+	printf("%s",s);
+	char* buff = malloc(NAME_LENGHT); fgets(buff, NAME_LENGHT, stdin);
+	if(buff[strlen(buff)-1] != '\n')
+		_FLUSH
+	buff[strlen(buff)-1] = '\0';
+	while(t[i]!=NULL){
+		if(!strcmp(buff,t[i]->nom)){
+			return i;
+		}
+		i++;
+	}
+	return -1;
+}
+
 // permet de changer l'ordre de la team
 void set_order(perso** t){
     int n,i = 0;
-    perso *buff;
+	char* ask = malloc(200);
+    perso *buff = malloc(sizeof(perso));
     while(t[i]!=NULL){
         clear();
         show_team(t);
-        printf("who takes the place of the %d [%s] : ", i+1,t[i]->nom);
-        while(scanf("%d",&n)==0){
-			printf("who takes the place of the %d [%s] : ", i+1,t[i]->nom);
-			while(getchar()!='\n');
+		sprintf(ask, "who takes the place of [%s] : ", t[i]->nom);
+        n = askName(t, ask);
+		if(n != -1) {
+        	buff = t[i];
+        	t[i] = t[n];
+        	t[n] = buff; 
+        	i++;
 		}
-        buff = t[i];
-        t[i] = t[n-1];
-        t[n-1] = buff; 
-        i++;
     }
 	printf("After order :");
 	show_team(t);

@@ -12,3 +12,4 @@ void show_semi(semi t[]);
 void show_idiot(idiot t[]);
 void set_order(perso** t);
 void team_round(perso** t);
+int askName(perso** t, char*);
