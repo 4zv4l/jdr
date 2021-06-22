@@ -16,3 +16,6 @@ affiche les personnages et mobs dans un tableau
 - [ ] mettre les bonnes caractéristiques aux mobs
 - [ ] tour par tour
 - [ ] gérer les attaques/défenses/autres
+
+# To compile
+`gcc main.c f.c stats.c`
