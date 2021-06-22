@@ -1,7 +1,7 @@
 while (team_joueur != mort || team_ennemis != mort)
 {
   print("c'est au tour de *perso x*") //(se trouve dans la file)
-  print("quelle action décide-t'il?\n 1: attaque physique;\n 2: attaque magique;\n 3 autre\")
+  print("quelle action décide-t'il?\n 1: attaque physique;\n 2: attaque magique;\n 3 autre\n")
   switch
     case 1: attaque;
     case 2: magie;
