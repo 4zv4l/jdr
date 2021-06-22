@@ -11,6 +11,7 @@ affiche les personnages et mobs dans un tableau
 # TODO
 - [x] afficher les perso
 - [x] créer les structures
+- [x] changer l'odre de la team
 - [ ] ajouter des mobs
 - [ ] mettre les bonnes caractéristiques aux mobs
 - [ ] tour par tour

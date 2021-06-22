@@ -1,4 +1,4 @@
-#include<stdio.h>
+#define NAME_LENGHT 15
 
 // stats intelligent
 typedef struct perso{

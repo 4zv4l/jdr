@@ -1,6 +1,5 @@
 #include "stats.h"
-#include <stdio.h>
-#define NAME_LENGHT 15
+#include<stdio.h>
 
 // show line for the table
 void print_line(int n){

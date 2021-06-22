@@ -1,7 +1,11 @@
+#include "f.h"
+#include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "pkg/show.c"
-#define _FLUSH while(getchar()!='\n');
+
+void clear(){
+    system("cls||clear");
+}
 
 // scan pour un int + gestion des erreurs
 //
@@ -34,7 +38,7 @@ void ask(perso *p){
 
 // créer les perso
 //
-// return un tableau de pointeurs
+// return un tableau de perso
 perso** init(){
 	int nPlayer = scan("How many players : ");
 	perso **p = malloc(sizeof(intel)*nPlayer);
@@ -46,12 +50,18 @@ perso** init(){
 	return p;
 }
 
-int main(){
-	perso **team = init();
-	show_team(team);
-	show_intel(intel_mobs);
-	show_semi(semi_mobs);
-	show_idiot(idiot_mobs);
-	free(team);
-	return 0;
+// permet de changer l'ordre de la team
+void set_order(perso** t){
+    int n,i = 0;
+    perso *buff;
+    while(t[i]!=NULL){
+        clear();
+        show_team(t);
+        printf("who takes the place of the %d [%s] : ", i+1,t[i]->nom);
+        scanf("%d",&n);
+        buff = t[i];
+        t[i] = t[n-1];
+        t[n-1] = buff; 
+        i++;
+    }
 }
