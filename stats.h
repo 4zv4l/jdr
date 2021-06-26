@@ -1,3 +1,5 @@
+#ifndef STATS_H
+#define STATS_H
 #define NAME_LENGHT 15
 
 // stats intelligent
@@ -58,3 +60,5 @@ static idiot idiot_mobs[] = {
     {"baguette",    10,  10},
     // ajouter
 };
+
+#endif // STATS_H

@@ -3,6 +3,7 @@
 #include<stdlib.h>
 #include<string.h>
 
+// clear the screen
 void clear(){
     system("cls||clear");
 }
@@ -51,6 +52,8 @@ perso** init(){
 }
 
 // ask for a name and return the index of this one
+//
+// return -1 if not found
 int askName(perso** t, char* s){
 	int i = 0;
 	printf("%s",s);
@@ -88,6 +91,7 @@ void set_order(perso** t){
 	show_team(t);
 }
 
+// ask each character what to do
 void team_round(perso** t){
 	clear();
 	show_team(t);
