@@ -33,6 +33,11 @@ perso** loadForNow(char* fname){
 		fscanf(f,"%d\n",&team[i]->armure);
 		fscanf(f,"%d\n",&team[i]->degat);
 		fscanf(f,"%d\n",&team[i]->mana);
+		if(team[i]->maxPV < 0 || team[i]->maxPV < 0 || team[i]->maxPV < 0 || team[i]->maxPV < 0){
+			fclose(f);
+			printf("Bad file format...\n");
+			return 0;
+		}
 		i++;
 	}
 	fclose(f);
