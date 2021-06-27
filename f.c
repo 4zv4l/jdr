@@ -12,11 +12,13 @@ void clear(){
 //
 // return la valeur obtenu
 int scan(char* s){
-	int buff;
-	printf("%s",s);
-	while(scanf("%d",&buff) == 0){
-		_FLUSH
+	int buff = -1;
+	while(buff < 0){
 		printf("%s",s);
+		while(scanf("%d",&buff) == 0){
+			_FLUSH
+			printf("%s",s);
+		}
 	}
 	_FLUSH
 	return buff;
@@ -42,6 +44,9 @@ void ask(perso *p){
 // return un tableau de perso
 perso** init(){
 	int nPlayer = scan("How many players : ");
+	if(nPlayer == 0){
+		exit(0);
+	}
 	perso **p = malloc(sizeof(intel)*nPlayer);
 	for(int i = 0; i < nPlayer; i++){
 		printf("perso %d\t:\n",i+1);
