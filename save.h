@@ -1,4 +1,5 @@
 #include "stats.h"
+#define _NPERSO 20
 
 perso** loadForNow(char* fname);
-perso** saveForLater(char* fname);
+int saveForLater(perso** t);

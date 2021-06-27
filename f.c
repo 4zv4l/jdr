@@ -27,7 +27,7 @@ int scan(char* s){
 // prend comme argument un pointeur vers un perso
 void ask(perso *p){
 	printf("\tnom    : ");
-	p->nom = malloc(NAME_LENGHT); fgets(p->nom, NAME_LENGHT, stdin);
+	p->nom = malloc(_NAME_LENGHT); fgets(p->nom, _NAME_LENGHT, stdin);
 	if(p->nom[strlen(p->nom)-1] != '\n')
 		_FLUSH
 	p->nom[strlen(p->nom)-1] = '\0';
@@ -57,12 +57,15 @@ perso** init(){
 int askName(perso** t, char* s){
 	int i = 0;
 	printf("%s",s);
-	char* buff = malloc(NAME_LENGHT); fgets(buff, NAME_LENGHT, stdin);
-	if(buff[strlen(buff)-1] != '\n')
+	char* buff = malloc(_NAME_LENGHT); fgets(buff, _NAME_LENGHT, stdin);
+	if(!strcmp(buff,"\n")){ // if just press ENTER
+		return -3;
+	}
+	if(buff[strlen(buff)-1] != '\n') // si le nom est trop grand -> vide stdin
 		_FLUSH
 	buff[strlen(buff)-1] = '\0';
 	while(t[i]!=NULL){
-		if(!strcmp(buff,t[i]->nom)){
+		if(!strcmp(buff,t[i]->nom)){ // if name in list of name
 			return i;
 		}
 		i++;
@@ -80,13 +83,15 @@ void set_order(perso** t){
         show_team(t);
 		sprintf(ask, "who takes the place of [%s] : ", t[i]->nom);
         n = askName(t, ask);
-		if(n != -1) {
+		if(n != -1 && n != -3) { // switch the two names
         	buff = t[i];
         	t[i] = t[n];
         	t[n] = buff; 
         	i++;
 		}
+		n == -3 ? i++ : 0;
     }
+	clear();
 	printf("After order :");
 	show_team(t);
 }

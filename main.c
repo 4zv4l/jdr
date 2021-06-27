@@ -14,30 +14,22 @@ int main(int argc, char** argv){
 	if(team == NULL){
 		team = init();
 	}
-	//perso **team = init();
-
-	// permet de créer les joueurs sans perdre de temps
-			/*perso **team = malloc(sizeof(perso)*3);
-			team[0] = malloc(sizeof(perso));
-			team[0]->nom = "Azz";
-			team[0]->armure = 1;
-			team[0]->degat = 1;
-			team[0]->mana = 1;
-			team[0]->maxPV = 1;
-			team[1] = malloc(sizeof(perso));
-			team[1]->nom = "Mega";
-			team[1]->armure = 1;
-			team[1]->degat = 1;
-			team[1]->mana = 1;
-			team[1]->maxPV = 1;
 
 	//show_team(team);
 	//show_intel(intel_mobs);
 	//show_semi(semi_mobs);
 	//show_idiot(idiot_mobs);
-	*/
+
+/*
+inclure une sorte de shell pour 
+	- lancer un combat
+	- sauvegarder
+	- changer les stats des joueurs
+*/
+
 	set_order(team);
-	team_round(team);
+	//team_round(team);
+	scan("Do you wanna save (1YES/2NO): ")==1 ? saveForLater(team) : 0;
 	free(team);
 	return 0;
 }
