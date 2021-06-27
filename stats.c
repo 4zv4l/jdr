@@ -26,7 +26,7 @@ void show_team(perso **t){
 	print_line(56+NAME_LENGHT);
 }
 
-// affiche les intel
+// affiche les races intelligentes
 void show_intel(intel t[]){
 	int i = 0;
 	char *titre[] = {"nom","pv","armure","attaque","mana"};
@@ -43,7 +43,7 @@ void show_intel(intel t[]){
 	print_line(56+NAME_LENGHT);
 }
 
-// affiche les semi
+// affiche les semi-intelligentes
 void show_semi(semi t[]){
 	int i = 0;
 	char *titre[] = {"nom","pv","armure","attaque"};
@@ -60,7 +60,7 @@ void show_semi(semi t[]){
 	print_line(43+NAME_LENGHT);
 }
 
-// affiche les idiots
+// affiche les animaux
 void show_idiot(idiot t[]){
 	int i = 0;
 	char *titre[] = {"nom","pv","attaque"};
