@@ -12,9 +12,7 @@ perso** loadForNow(char* fname){
 	if(f == NULL){
 		printf("Error while opening : %s\n",fname);
 		return 0;
-	}
-	printf("file opened with success!\n");
-	
+	}	
 	// allocate the memory for the team
 	perso** team = malloc(sizeof(perso)*_NPERSO);
 	char* line = malloc(_NAME_LENGHT);
@@ -33,6 +31,7 @@ perso** loadForNow(char* fname){
 		fscanf(f,"%d\n",&team[i]->armure);
 		fscanf(f,"%d\n",&team[i]->degat);
 		fscanf(f,"%d\n",&team[i]->mana);
+		// if any negative number
 		if(team[i]->maxPV < 0 || team[i]->armure < 0 || team[i]->degat < 0 || team[i]->mana < 0){
 			fclose(f);
 			printf("Bad file format...\n");
