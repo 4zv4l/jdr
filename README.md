@@ -20,4 +20,4 @@ affiche les personnages et mobs dans un tableau
 # To compile
 `make`
 or
-`gcc main.c f.c stats.c`
+`gcc main.c f.c stats.c save.c`
