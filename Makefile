@@ -1,4 +1,4 @@
 main:
 	@echo Building...
-	@gcc main.c stats.c f.c
+	@gcc -g main.c f.c stats.c save.c
 	@echo Done!
