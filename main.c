@@ -7,13 +7,17 @@
 
 void help(){
 	printf("Usage :\n"
-	"\th     -> show help\n"
-	"\tadd   -> add a perso\n"
-	"\trem   -> remove a perso\n"
-	"\tshow  -> show the team\n"
-	"\tsave  -> save the team for later\n"
-	"\tclear -> clear the screen\n"
-	"\texit  -> quit\n");
+	"\th      -> show help\n"
+	"\tinit   -> init a team of perso\n"
+	"\tadd    -> add a perso\n"
+	"\trem    -> remove a perso\n"
+	"\tsteam  -> show the team\n"
+	"\tsintel -> show the team\n"
+	"\tssemi  -> show the team\n"
+	"\tssilly  -> show the team\n"
+	"\tsave   -> save the team for later\n"
+	"\tclear  -> clear the screen\n"
+	"\texit   -> quit\n");
 }
 
 // allow the user to type command to interact with the program
@@ -27,6 +31,8 @@ int shell(perso** t){
 		cmd[strlen(cmd)-1] = '\0';
 		if(!strcmp(cmd,"h")){
 			help();
+		} else if(!strcmp(cmd,"init")){
+			t = init();
 		} else if(!strcmp(cmd,"add")){
 			if(t == 0){
 				t = init();
@@ -35,8 +41,14 @@ int shell(perso** t){
 			}
 		} else if(!strcmp(cmd,"rem")){
 			rem(t);
-		} else if(!strcmp(cmd,"show")){
+		} else if(!strcmp(cmd,"steam")){
 			show_team(t);
+		} else if(!strcmp(cmd,"sintel")){
+			show_intel(intel_mobs);
+		} else if(!strcmp(cmd,"ssemi")){
+			show_semi(semi_mobs);
+		} else if(!strcmp(cmd,"ssilly")){
+			show_idiot(idiot_mobs);
 		} else if(!strcmp(cmd,"save")){
 			saveForLater(t);
 		}else if(!strcmp(cmd,"clear")){
@@ -55,10 +67,6 @@ int main(int argc, char** argv){
 	if(argc >= 2){
 		team = loadForNow(argv[1]);
 	}
-	if(team == NULL){
-		team = init();
-	}
-
 	//show_team(team);
 	//show_intel(intel_mobs);
 	//show_semi(semi_mobs);
