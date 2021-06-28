@@ -46,7 +46,7 @@ void ask(perso *p, int i){
 perso** init(){
 	int nPlayer = scan("How many players : ");
 	if(nPlayer == 0){
-		exit(0);
+		return 0;
 	}
 	perso **p = malloc(sizeof(intel)*nPlayer);
 	for(int i = 0; i < nPlayer; i++){
@@ -65,15 +65,35 @@ int get_length(perso **t){
 }
 
 void add(perso** t){
+	clear();
 	int index = get_length(t);
 	t[index] = malloc(sizeof(perso));
 	ask(t[index],index);
 }
 
+void rem(perso** t){
+	int index = askName(t, "who do you wanna remove : ");
+	while(index == -1){
+		index = askName(t, "who do you wanna remove : ");
+	}
+	if(index == -3){
+		return;
+	}
+	while(t[index]!=NULL){ // swich the indexes to remove the perso
+		t[index] = t[index+1];
+		index++;
+	}
+}
+
 // ask for a name and return the index of this one
 //
 // return -1 if not found
+//
+// return -3 if \n
 int askName(perso** t, char* s){
+	if(t == 0){
+		return -3;
+	}
 	int i = 0;
 	printf("%s",s);
 	char* buff = malloc(_NAME_LENGHT); fgets(buff, _NAME_LENGHT, stdin);
@@ -111,8 +131,8 @@ void set_order(perso** t){
 		n == -3 ? i++ : 0;
     }
 	clear();
-	printf("After order :");
-	show_team(t);
+	// printf("After order :");
+	// show_team(t);
 }
 
 // ask each character what to do

@@ -14,4 +14,5 @@ void set_order(perso** t);
 void team_round(perso** t);
 int askName(perso** t, char*);
 int get_length(perso** t);
-void add (perso** t);
+void add(perso** t);
+void rem(perso** t);

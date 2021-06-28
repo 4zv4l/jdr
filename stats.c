@@ -1,4 +1,5 @@
 #include "stats.h"
+#include "f.h"
 #include<stdio.h>
 
 // show line for the table
@@ -11,6 +12,11 @@ void print_line(int n){
 
 // affiche les perso
 void show_team(perso **t){
+	if(t == 0){
+		printf("No one to show...\n");
+		return;
+	}
+	clear();
 	int i = 0;
 	char *titre[] = {"nom","pv","armure","attaque","mana"};
 	printf("\n");
