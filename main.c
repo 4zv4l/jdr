@@ -6,18 +6,24 @@
 #define _FLUSH while(getchar()!='\n');
 
 void help(){
-	printf("Usage :\n"
+	printf(
+	"Usage :\n"
 	"\th      -> show help\n"
-	"\tinit   -> init a team of perso\n"
-	"\tadd    -> add a perso\n"
-	"\trem    -> remove a perso\n"
-	"\tsteam  -> show the team\n"
-	"\tsintel -> show the team\n"
-	"\tssemi  -> show the team\n"
-	"\tssilly  -> show the team\n"
-	"\tsave   -> save the team for later\n"
 	"\tclear  -> clear the screen\n"
-	"\texit   -> quit\n");
+	"\texit   -> quit\n"
+	"\tmodify team :\n"
+	"\t\tadd    -> add a perso\n"
+	"\t\trem    -> remove a perso\n"
+	"\t\torder  -> change order of the team\n"
+	"\tshow :\n"
+	"\t\tsteam  -> show the team\n"
+	"\t\tsintel -> show the team\n"
+	"\t\tssemi  -> show the team\n"
+	"\t\tssilly -> show the team\n"
+	"\tsave :\n"
+	"\t\tload   -> load a team from a file\n"
+	"\t\tsave   -> save the team for later\n"
+	);
 }
 
 // allow the user to type command to interact with the program
@@ -31,8 +37,6 @@ int shell(perso** t){
 		cmd[strlen(cmd)-1] = '\0';
 		if(!strcmp(cmd,"h")){
 			help();
-		} else if(!strcmp(cmd,"init")){
-			t = init();
 		} else if(!strcmp(cmd,"add")){
 			if(t == 0){
 				t = init();
@@ -41,6 +45,8 @@ int shell(perso** t){
 			}
 		} else if(!strcmp(cmd,"rem")){
 			rem(t);
+		} else if(!strcmp(cmd,"order")){
+			set_order(t);
 		} else if(!strcmp(cmd,"steam")){
 			show_team(t);
 		} else if(!strcmp(cmd,"sintel")){
@@ -51,10 +57,16 @@ int shell(perso** t){
 			show_idiot(idiot_mobs);
 		} else if(!strcmp(cmd,"save")){
 			saveForLater(t);
-		}else if(!strcmp(cmd,"clear")){
+		} else if(!strcmp(cmd,"load")){
+			char* fname = malloc(_NAME_LENGHT);
+			printf("file : ");
+			fgets(fname, _NAME_LENGHT, stdin);
+			if(fname[strlen(fname)-1] != '\n')
+				_FLUSH
+			fname[strlen(fname)-1] = '\0';
+			t = loadForNow(fname);
+		} else if(!strcmp(cmd,"clear")){
 			clear();
-		} else if(strcmp(cmd,"exit")){
-			printf("%s : Command not found...\n", cmd);
 		}
 	}
 	free(cmd);
