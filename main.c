@@ -29,6 +29,8 @@ inclure une sorte de shell pour
 
 	set_order(team);
 	//team_round(team);
+	add(team);
+	set_order(team);
 	scan("Do you wanna save (1YES/2NO): ")==1 ? saveForLater(team) : 0;
 	free(team);
 	return 0;

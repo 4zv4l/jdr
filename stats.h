@@ -1,6 +1,8 @@
 #ifndef STATS_H
 #define STATS_H
 #define _NAME_LENGHT 15
+#define _NPERSO 20
+
 
 // stats intelligent
 typedef struct perso{

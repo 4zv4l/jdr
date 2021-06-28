@@ -27,7 +27,8 @@ int scan(char* s){
 // demande les infos d'un perso
 //
 // prend comme argument un pointeur vers un perso
-void ask(perso *p){
+void ask(perso *p, int i){
+	printf("perso %d\t:\n",i+1);
 	printf("\tnom    : ");
 	p->nom = malloc(_NAME_LENGHT); fgets(p->nom, _NAME_LENGHT, stdin);
 	if(p->nom[strlen(p->nom)-1] != '\n')
@@ -49,11 +50,24 @@ perso** init(){
 	}
 	perso **p = malloc(sizeof(intel)*nPlayer);
 	for(int i = 0; i < nPlayer; i++){
-		printf("perso %d\t:\n",i+1);
 		p[i] = malloc(sizeof(intel));
-		ask(p[i]);
+		ask(p[i],i);
 	}
 	return p;
+}
+
+int get_length(perso **t){
+	int i = 0;
+	while(t[i]!=NULL){
+		i++;
+	}
+	return i;
+}
+
+void add(perso** t){
+	int index = get_length(t);
+	t[index] = malloc(sizeof(perso));
+	ask(t[index],index);
 }
 
 // ask for a name and return the index of this one
