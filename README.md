@@ -18,7 +18,7 @@ affiche les personnages et mobs dans un tableau
 - [ ] gérer les attaques/défenses/autres
 
 # To compile
-`make all`   for common usage
-`make obj`   to compile dependences to object files
-`make debug` to compile with debug informations
-`make clean` clear the binary and object files
+`make all`   for common usage <br/>
+`make obj`   to compile dependences to object files <br/>
+`make debug` to compile with debug informations <br/>
+`make clean` clear the binary and object files <br/>
