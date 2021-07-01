@@ -48,7 +48,9 @@ int shell(perso** t){
 			if(t == 0){
 				printf("No team to battle with...\n");
 			}else{
-				intel **enemis = init_battle(scan("Difficulty : "));
+				int diff = scan("Difficulty : ");
+				intel **enemis = malloc(sizeof(intel*)*diff+1);
+				enemis = init_battle(diff);
 				team_round(t,enemis);
 				free(enemis);
 			}

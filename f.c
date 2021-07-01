@@ -148,7 +148,16 @@ intel** init_battle(int diff){
 	intel** mobs = malloc(sizeof(intel*)*diff+1);
 	for(i = 0; i<diff;i++){
 		j = (rand()%size);
-		mobs[i] = &intel_mobs[j];
+		//memcpy(mobs[i],&intel_mobs[j],sizeof(intel));
+		//mobs[i] = &intel_mobs[j];
+		mobs[i] = malloc(sizeof(intel));
+		mobs[i]->nom = malloc(_NAME_LENGHT);
+		mobs[i]->nom = intel_mobs[j].nom;
+		mobs[i]->maxPV = intel_mobs[j].maxPV;
+		mobs[i]->armure = intel_mobs[j].armure;
+		mobs[i]->degat = intel_mobs[j].degat;
+		mobs[i]->mana = intel_mobs[j].mana;
+	
 	}
 	mobs[diff] = 0;
 	return mobs;
@@ -171,6 +180,9 @@ void attaque(perso* p, intel* i,int who){
 			p->maxPV = 0;
 		}
 	}
+	printf("%s -> %dpv\n%s -> %dpv\n",
+			p->nom,p->maxPV,
+			i->nom,i->maxPV);
 }
 
 // ask each character what to do
@@ -181,18 +193,18 @@ void team_round(perso** t, intel** e){
 	show_enemis(e);
 	int i=0,n;
 	while(t[i]!=NULL){
-		printf("%s's turn :\n",t[i++]->nom);
+		printf("%s's turn :\n",t[i]->nom);
 		printf("\t1. attaque\n");
 		printf("\t2. defense\n");
 		printf("\t3. rien\n\n");
-		n= scan("> ");
+		n=scan("> ");
 		while(n <= 0 && n >= 4){
 			n= scan("> ");
 		}
 		switch (n) {
 		case 1:
-			printf("Go go go!\n");
-			attaque(t[i], e[i],1);
+			printf("Go go go %s\n",t[i]->nom);
+			attaque(t[i], e[0],1);
 			break;
 		case 2:
 			printf("defending!\n");
@@ -202,5 +214,7 @@ void team_round(perso** t, intel** e){
 			printf("nothing...\n");
 			break;
 		}
+		i++;
+		show_enemis(e);
 	}
 }
