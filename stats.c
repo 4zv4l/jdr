@@ -45,8 +45,8 @@ void show_enemis(intel **t){
 	-_NAME_LENGHT, titre[0],10,titre[1],10,titre[2],10,titre[3],10,titre[4]);
 	print_line(56+_NAME_LENGHT);
 	while(t[i] != NULL){
-		printf("| %*s | %10d | %10d | %10d | %10d |\n",
-		-_NAME_LENGHT, t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana);
+		printf("| %*s | %10d | %10d | %10d | %10d | %d\n",
+		-_NAME_LENGHT, t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana, i);
 		i++;
 	}
 	print_line(56+_NAME_LENGHT);

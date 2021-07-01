@@ -4,6 +4,8 @@
 #include<string.h>
 #include<time.h>
 
+static int size_enemis;
+
 // clear the screen
 void clear(){
     system("cls||clear");
@@ -141,6 +143,7 @@ intel** init_battle(int diff){
 		printf("combat with 0 mob isn't allowed...\n");
 		diff = 2;
 	}
+	size_enemis = diff;
 	srand(time(NULL));
 	int i,j;
 	int size = sizeof(intel_mobs)/sizeof(intel_mobs[0]);
@@ -198,13 +201,18 @@ void team_round(perso** t, intel** e){
 		printf("\t2. defense\n");
 		printf("\t3. rien\n\n");
 		n=scan("> ");
-		while(n <= 0 && n >= 4){
-			n= scan("> ");
+		while(n <= 0 || n >= 4){
+			n = scan("> ");
 		}
 		switch (n) {
 		case 1:
 			printf("Go go go %s\n",t[i]->nom);
-			attaque(t[i], e[0],1);
+			n = scan("which enemi : ");
+			while(n < 0 || n > size_enemis-1){
+				n = scan("which enemi : ");
+			}
+			printf("--> %d\n",n);
+			attaque(t[i], e[n],1);
 			break;
 		case 2:
 			printf("defending!\n");
