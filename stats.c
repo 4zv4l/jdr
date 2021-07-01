@@ -32,6 +32,26 @@ void show_team(perso **t){
 	print_line(56+_NAME_LENGHT);
 }
 
+void show_enemis(intel **t){
+	if(t == 0){
+		printf("No one to show...\n");
+		return;
+	}
+	int i = 0;
+	char *titre[] = {"nom","pv","armure","attaque","mana"};
+	printf("\n");
+	print_line(56+_NAME_LENGHT);
+	printf("| %*s | %*s | %*s | %*s | %*s |\n",
+	-_NAME_LENGHT, titre[0],10,titre[1],10,titre[2],10,titre[3],10,titre[4]);
+	print_line(56+_NAME_LENGHT);
+	while(t[i] != NULL){
+		printf("| %*s | %10d | %10d | %10d | %10d |\n",
+		-_NAME_LENGHT, t[i]->nom, t[i]->maxPV,t[i]->armure,t[i]->degat, t[i]->mana);
+		i++;
+	}
+	print_line(56+_NAME_LENGHT);
+}
+
 // affiche les intel
 void show_intel(intel t[]){
 	int i = 0;

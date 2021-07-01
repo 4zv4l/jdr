@@ -2,6 +2,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
 
 // clear the screen
 void clear(){
@@ -135,10 +136,25 @@ void set_order(perso** t){
 	// show_team(t);
 }
 
+intel** init_battle(int diff){
+	srand(time(NULL));
+	int i,j;
+	int size = sizeof(intel_mobs)/sizeof(intel_mobs[0]);
+	intel** mobs = malloc(sizeof(intel*)*diff+1);
+	for(i = 0; i<diff;i++){
+		j = (rand()%size-1)+1;
+		mobs[i] = &intel_mobs[j];
+	}
+	mobs[diff] = 0;
+	return mobs;
+}
+
 // ask each character what to do
-void team_round(perso** t){
+void team_round(perso** t, intel** e){
 	clear();
 	show_team(t);
+	printf("VS\n");
+	show_enemis(e);
 	int i=0,n;
 	while(t[i]!=NULL){
 		printf("%s's turn :\n",t[i++]->nom);

@@ -11,6 +11,7 @@ void help(){
 	"\th      -> show help\n"
 	"\tclear  -> clear the screen\n"
 	"\texit   -> quit\n"
+	"\tbattle -> start a battle\n"
 	"\tmodify team :\n"
 	"\t\tadd    -> add a perso\n"
 	"\t\trem    -> remove a perso\n"
@@ -42,6 +43,14 @@ int shell(perso** t){
 				t = init();
 			}else{
 				add(t);
+			}
+		} else if(!strcmp(cmd,"battle")){
+			if(t == 0){
+				printf("No team to battle with...\n");
+			}else{
+				intel **enemis = init_battle(scan("Difficulty : "));
+				team_round(t,enemis);
+				free(enemis);
 			}
 		} else if(!strcmp(cmd,"rem")){
 			rem(t);
