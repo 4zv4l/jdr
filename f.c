@@ -137,16 +137,40 @@ void set_order(perso** t){
 }
 
 intel** init_battle(int diff){
+	if(diff == 0){
+		printf("combat with 0 mob isn't allowed...\n");
+		diff = 2;
+	}
 	srand(time(NULL));
 	int i,j;
 	int size = sizeof(intel_mobs)/sizeof(intel_mobs[0]);
+	size--;
 	intel** mobs = malloc(sizeof(intel*)*diff+1);
 	for(i = 0; i<diff;i++){
-		j = (rand()%size-1)+1;
+		j = (rand()%size);
 		mobs[i] = &intel_mobs[j];
 	}
 	mobs[diff] = 0;
 	return mobs;
+}
+
+// remove life
+//
+// who is to know who attaque who
+//
+// 1 -> p; 0 -> i
+void attaque(perso* p, intel* i,int who){
+	if(who == 1){
+		i->maxPV -= p->degat;
+		if(i->maxPV < 0){
+			i->maxPV = 0;
+		}
+	} else {
+		p->maxPV -= i->degat;
+		if(p->maxPV < 0){
+			p->maxPV = 0;
+		}
+	}
 }
 
 // ask each character what to do
@@ -168,7 +192,7 @@ void team_round(perso** t, intel** e){
 		switch (n) {
 		case 1:
 			printf("Go go go!\n");
-			//attaque(t[i]);
+			attaque(t[i], e[i],1);
 			break;
 		case 2:
 			printf("defending!\n");

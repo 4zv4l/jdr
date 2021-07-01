@@ -18,3 +18,5 @@ int askName(perso** t, char*);
 int get_length(perso** t);
 void add(perso** t);
 void rem(perso** t);
+
+void attaque(perso*,intel*, int);
