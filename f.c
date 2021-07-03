@@ -171,7 +171,10 @@ intel** init_battle(int diff){
 // who is to know who attaque who
 //
 // 1 -> p; 0 -> i
-void attaque(perso* p, intel* i,int who){
+int attaque(perso* p, intel* i,int who){
+	if(p->maxPV == 0 || i->maxPV == 0){
+		return -1;
+	}
 	if(who == 1){
 		i->maxPV -= p->degat;
 		if(i->maxPV < 0){
@@ -186,20 +189,18 @@ void attaque(perso* p, intel* i,int who){
 	printf("%s -> %dpv\n%s -> %dpv\n",
 			p->nom,p->maxPV,
 			i->nom,i->maxPV);
+	return 0;
 }
 
-// ask each character what to do
-void team_round(perso** t, intel** e){
-	clear();
-	show_team(t);
-	printf("VS\n");
-	show_enemis(e);
-	int i=0,n;
+void player_turn(perso** t, int i, intel** e){
+	int n;
 	while(t[i]!=NULL){
-		printf("%s's turn :\n",t[i]->nom);
-		printf("\t1. attaque\n");
-		printf("\t2. defense\n");
-		printf("\t3. rien\n\n");
+		printf(
+		"%s's turn :\n"
+		"\t1. attaque\n"
+		"\t2. defense\n"
+		"\t3. rien\n"
+		, t[i]->nom);
 		n=scan("> ");
 		while(n <= 0 || n >= 4){
 			n = scan("> ");
@@ -212,7 +213,13 @@ void team_round(perso** t, intel** e){
 				n = scan("which enemi : ");
 			}
 			printf("--> %d\n",n);
-			attaque(t[i], e[n],1);
+			while(attaque(t[i],e[n],1)!=0){
+				n = scan("which enemi : ");
+				while(n < 0 || n > size_enemis-1){
+					n = scan("which enemi : ");
+				}
+				attaque(t[i], e[n],1);
+			}
 			break;
 		case 2:
 			printf("defending!\n");
@@ -225,4 +232,30 @@ void team_round(perso** t, intel** e){
 		i++;
 		show_enemis(e);
 	}
+
+}
+
+int enemisDown(intel** e){
+	int i=0;
+	while(e[i]!=NULL){
+		if(e[i]->maxPV != 0){
+			return -1;
+		}
+		i++;
+	}
+	return 0;
+}
+
+// ask each character what to do
+void team_round(perso** t, intel** e){
+	clear();
+	show_team(t);
+	printf("VS\n");
+	show_enemis(e);
+	int i,n;
+	while(enemisDown(e)!=0){
+		i = 0;
+		player_turn(t,i,e);
+	}
+	printf("all enemis are dead...\n");
 }

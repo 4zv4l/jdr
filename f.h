@@ -19,4 +19,6 @@ int get_length(perso** t);
 void add(perso** t);
 void rem(perso** t);
 
-void attaque(perso*,intel*, int);
+void player_turn(perso**,int,intel**);
+int attaque(perso*,intel*, int);
+int enemisDown(intel**);
