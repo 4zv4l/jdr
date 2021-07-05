@@ -139,7 +139,12 @@ void inv_rem(perso* t){
 	int i = 0;
 	while(t->inv[i]!=NULL){
 		if(t->inv[i] == item){
-			// do smth
+			i = 0;
+			while(t->inv[i]!=0){ // swich the indexes to remove the perso
+				t->inv[i] = t->inv[i+1];
+				i++;
+			}
+			return;
 		}
 	}
 }

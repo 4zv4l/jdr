@@ -60,6 +60,7 @@ perso** init(){
 	return p;
 }
 
+// return the length of the perso array
 int get_length(perso **t){
 	int i = 0;
 	while(t[i]!=NULL){
@@ -68,6 +69,7 @@ int get_length(perso **t){
 	return i;
 }
 
+// add a perso
 void add(perso** t){
 	clear();
 	int index = get_length(t);
@@ -75,6 +77,7 @@ void add(perso** t){
 	ask(t[index],index);
 }
 
+// remove a perso
 void rem(perso** t){
 	int index = askName(t, "who do you wanna remove : ");
 	while(index == -1){
@@ -139,6 +142,7 @@ void set_order(perso** t){
 	// show_team(t);
 }
 
+// initialise the battle choosing random enemis
 intel** init_battle(int diff){
 	if(diff == 0){
 		printf("combat with 0 mob isn't allowed...\n");
@@ -193,6 +197,7 @@ int attaque(perso* p, intel* i,int who){
 	return 0;
 }
 
+// ask players what to do until all enemis are dead
 void player_turn(perso** t, int i, intel** e){
 	int n;
 	while(t[i]!=NULL){
@@ -235,6 +240,9 @@ void player_turn(perso** t, int i, intel** e){
 
 }
 
+// return -1 if all enemis aren't down
+//
+// return 0 if all enemis are down
 int enemisDown(intel** e){
 	int i=0;
 	while(e[i]!=NULL){
@@ -246,7 +254,7 @@ int enemisDown(intel** e){
 	return 0;
 }
 
-// ask each character what to do
+// handle the battle
 void team_round(perso** t, intel** e){
 	clear();
 	show_team(t);
