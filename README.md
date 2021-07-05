@@ -8,6 +8,12 @@ aide pour jeu de rôle
 ## show.c
 affiche les personnages et mobs dans un tableau
 
+## save.c
+contient save() et load()
+
+## f.c
+contient la plupart des fonctions pour la gestions des perso et des combats
+
 # TODO
 - [x] afficher les perso
 - [x] créer les structures
