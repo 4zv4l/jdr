@@ -24,6 +24,7 @@ perso** loadForNow(char* fname){
 			break;
 		}
 		line[strlen(line)-1] = '\0';
+		printf("-> %s\n",line);
 		team[i] = malloc(sizeof(perso));
 		team[i]->nom = malloc(_NAME_LENGHT);
 		strcpy(team[i]->nom,line);
@@ -31,14 +32,30 @@ perso** loadForNow(char* fname){
 		fscanf(f,"%d\n",&team[i]->armure);
 		fscanf(f,"%d\n",&team[i]->degat);
 		fscanf(f,"%d\n",&team[i]->mana);
-		// if any negative number
+		int j = 0;
+		char* inv = malloc(100);
+		team[i]->inv = malloc(INV_SIZE);
+		fgets(inv, 100,f);
+		inv[strlen(inv)-1] = '\0';
+		while(!strcmp(inv,"-1")){
+			team[i]->inv[j] = malloc(INV_SIZE);
+			strcpy(team[i]->inv[j],inv);
+			fgets(inv,INV_SIZE,f);
+			inv[strlen(inv)-1] = '\0';
+			j++;
+		}
+		fgets(inv,100,f);
+		free(inv);
+		// if any negative number	
 		if(team[i]->maxPV < 0 || team[i]->armure < 0 || team[i]->degat < 0 || team[i]->mana < 0){
 			fclose(f);
 			printf("Bad file format...\n");
 			return 0;
 		}
+		
 		i++;
 	}
+	free(line);
 	fclose(f);
 	return team;
 }
@@ -57,6 +74,12 @@ int saveForLater(perso** t){
 	int i = 0;
 	while(t[i] != NULL){
 		fprintf(f,"%s\n%d\n%d\n%d\n%d\n",t[i]->nom,t[i]->maxPV,t[i]->armure,t[i]->degat,t[i]->mana);
+		int j = 0;
+		while(t[i]->inv[j]!=0){
+			fprintf(f,"%s\n",t[i]->inv[j]);
+			j++;
+		}
+		fprintf(f,"-1\n");
 		i++;
 	}
 	fclose(f);

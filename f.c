@@ -55,6 +55,7 @@ perso** init(){
 	for(int i = 0; i < nPlayer; i++){
 		p[i] = malloc(sizeof(intel));
 		ask(p[i],i);
+		p[i]->inv = 0;
 	}
 	return p;
 }
@@ -212,7 +213,6 @@ void player_turn(perso** t, int i, intel** e){
 			while(n < 0 || n > size_enemis-1){
 				n = scan("which enemi : ");
 			}
-			printf("--> %d\n",n);
 			while(attaque(t[i],e[n],1)!=0){
 				n = scan("which enemi : ");
 				while(n < 0 || n > size_enemis-1){

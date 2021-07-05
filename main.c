@@ -12,6 +12,7 @@ void help(){
 	"\tclear  -> clear the screen\n"
 	"\texit   -> quit\n"
 	"\tbattle -> start a battle\n"
+	"\tinvent -> manage team inventory\n"
 	"\tmodify team :\n"
 	"\t\tadd    -> add a perso\n"
 	"\t\trem    -> remove a perso\n"
@@ -44,7 +45,7 @@ int shell(perso** t){
 			}else{
 				add(t);
 			}
-		} else if(!strcmp(cmd,"battle")){
+		} else if(!strcmp(cmd,"battle")||!strcmp(cmd,"b")){
 			if(t == 0){
 				printf("No team to battle with...\n");
 			}else{
@@ -54,6 +55,8 @@ int shell(perso** t){
 				team_round(t,enemis);
 				free(enemis);
 			}
+		} else if (!strcmp(cmd,"invent")){
+			invent(t);
 		} else if(!strcmp(cmd,"rem")){
 			rem(t);
 		} else if(!strcmp(cmd,"order")){
@@ -76,6 +79,7 @@ int shell(perso** t){
 				_FLUSH
 			fname[strlen(fname)-1] = '\0';
 			t = loadForNow(fname);
+			free(fname);
 		} else if(!strcmp(cmd,"clear")){
 			clear();
 		}

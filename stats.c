@@ -1,6 +1,8 @@
 #include "stats.h"
 #include "f.h"
 #include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
 
 // show line for the table
 void print_line(int n){
@@ -101,4 +103,87 @@ void show_idiot(idiot t[]){
 		i++;
 	}
 	print_line(30+_NAME_LENGHT);
+}
+
+// initialise the inventory with INV_SIZE of storage
+void inv_init(perso* t){
+	t->inv = malloc(sizeof(char*)*INV_SIZE);
+	for(int i = 0; i<INV_SIZE;i++){
+		t->inv[i] = 0;
+	}
+	printf("inventory created!\nsize : %d\n",INV_SIZE);
+}
+
+// return the index of the last item
+int inv_last(char** i){
+	int n = 0;
+	while(i[n]!=0){
+		n++;
+	}
+	return n;
+}
+
+// add an item in the inventory
+void inv_add(perso* t){
+	char* item = malloc(100);
+	printf("item to add : ");fgets(item,100,stdin);
+	item[strlen(item)-1] = '\0';
+	t->inv[inv_last(t->inv)] = item;
+	//free(item);
+}
+
+// remove an item from the inventory
+void inv_rem(perso* t){
+	char* item = malloc(100);
+	printf("item to del : ");fgets(item,100,stdin);
+	int i = 0;
+	while(t->inv[i]!=NULL){
+		if(t->inv[i] == item){
+			// do smth
+		}
+	}
+}
+
+// show the inventory
+void inv_show(perso* t){
+	if(t->inv[0] == 0){
+		return;
+	}
+	int n = 0;
+	while(t->inv[n]!=NULL){
+		printf("%s\n",t->inv[n]);
+		n++;
+	}
+}
+
+// handle the inventory add/rem/show
+void invent(perso** t){
+	show_team(t);
+	int n;
+	n = askName(t, "inventory of who : ");
+	if(n == -3){
+		return;
+	}
+	while(n == -1){
+		n = askName(t, "inventory of who : ");
+	}
+	if(t[n]->inv == 0){
+		inv_init(t[n]);
+	}
+	//inv_show(t[n]);
+	char* choice = malloc(100);
+	printf("add/rem/show : "); fgets(choice,100,stdin);
+	choice[strlen(choice)-1] = '\0';
+	if(strcmp(choice,"add") == 0){
+		printf("add\n");
+		inv_add(t[n]);
+	} else if(strcmp(choice,"rem") == 0){
+		printf("rem\n");
+		inv_rem(t[n]);
+	} else if(strcmp(choice,"show") == 0){
+		inv_show(t[n]);
+	} else {
+		printf("none\n");
+	}
+	free(choice);
 }

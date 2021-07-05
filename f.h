@@ -12,6 +12,14 @@ void show_enemis(intel**);
 void show_intel(intel t[]);
 void show_semi(semi t[]);
 void show_idiot(idiot t[]);
+
+void invent(perso**);
+void inv_init(perso*);
+void inv_add(perso*);
+void inv_rem(perso*);
+void inv_show(perso*);
+
+
 void set_order(perso** t);
 void team_round(perso** t, intel** enemis);
 int askName(perso** t, char*);

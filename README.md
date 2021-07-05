@@ -12,9 +12,11 @@ affiche les personnages et mobs dans un tableau
 - [x] afficher les perso
 - [x] créer les structures
 - [x] changer l'odre de la team
+- [ ] retirer item de l'inventaire 
+- [ ] sauvegarde avec inventaire
 - [ ] ajouter des mobs
 - [ ] mettre les bonnes caractéristiques aux mobs
-- [ ] tour par tour
+- [x] tour par tour
 - [ ] gérer les attaques/défenses/autres
 
 # To compile

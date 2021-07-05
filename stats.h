@@ -2,6 +2,7 @@
 #define STATS_H
 #define _NAME_LENGHT 15
 #define _NPERSO 20
+#define INV_SIZE 100
 
 
 // stats intelligent
@@ -11,6 +12,7 @@ typedef struct perso{
 	int armure;
 	int degat;
 	int mana;
+	char** inv;
 } perso;
 
 // stats intelligent
