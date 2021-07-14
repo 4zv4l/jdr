@@ -105,15 +105,6 @@ void show_idiot(idiot t[]){
 	print_line(30+_NAME_LENGHT);
 }
 
-// initialise the inventory with INV_SIZE of storage
-void inv_init(perso* t){
-	t->inv = malloc(sizeof(char*)*INV_SIZE);
-	for(int i = 0; i<INV_SIZE;i++){
-		t->inv[i] = 0;
-	}
-	printf("inventory created!\nsize : %d\n",INV_SIZE);
-}
-
 // return the index of the last item
 int inv_last(char** i){
 	int n = 0;
@@ -121,6 +112,15 @@ int inv_last(char** i){
 		n++;
 	}
 	return n;
+}
+
+// initialise the inventory with INV_SIZE of storage
+void inv_init(perso* t){
+	t->inv = malloc(sizeof(char*)*INV_SIZE);
+	for(int i = 0; i<INV_SIZE;i++){
+		t->inv[i] = 0;
+	}
+	printf("inventory created!\nsize : %d\n",INV_SIZE);
 }
 
 // add an item in the inventory
