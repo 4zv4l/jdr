@@ -319,10 +319,12 @@ void player_turn(perso** t, int i, intel** e){
 			printf("nothing...\n");
 			break;
 		}
+		if(enemisDown(e) == 0){
+			break;
+		}
 		i++;
 		show_enemis(e);
 	}
-
 }
 
 // return -1 if all enemis aren't down
