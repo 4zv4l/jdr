@@ -32,20 +32,20 @@ perso** loadForNow(char* fname){
 		fscanf(f,"%d\n",&team[i]->armure);
 		fscanf(f,"%d\n",&team[i]->degat);
 		fscanf(f,"%d\n",&team[i]->mana);
-		int j = 0;
-		char* inv = malloc(100);
+		int j = 0; // index of item
+		char* inv = malloc(100); // buff for inventory
+		// init the inventory of the current user
 		team[i]->inv = malloc(INV_SIZE);
 		fgets(inv, 100,f);
 		inv[strlen(inv)-1] = '\0';
-		while(!strcmp(inv,"-1")){
+		while(strcmp(inv,"-1") != 0){ // -1 stop the loop
 			team[i]->inv[j] = malloc(INV_SIZE);
 			strcpy(team[i]->inv[j],inv);
 			fgets(inv,INV_SIZE,f);
 			inv[strlen(inv)-1] = '\0';
 			j++;
 		}
-		fgets(inv,100,f);
-		free(inv);
+		free(inv); // free the buffer inv
 		// if any negative number	
 		if(team[i]->maxPV < 0 || team[i]->armure < 0 || team[i]->degat < 0 || team[i]->mana < 0){
 			fclose(f);
@@ -74,13 +74,15 @@ int saveForLater(perso** t){
 	int i = 0;
 	while(t[i] != NULL){
 		fprintf(f,"%s\n%d\n%d\n%d\n%d\n",t[i]->nom,t[i]->maxPV,t[i]->armure,t[i]->degat,t[i]->mana);
-		int j = 0;
-		while(t[i]->inv[j]!=0){
-			fprintf(f,"%s\n",t[i]->inv[j]);
-			j++;
+		if(t[i]->inv != 0){ // if inv not created
+			int j = 0;
+			while(t[i]->inv[j]!=0){
+				fprintf(f,"%s\n",t[i]->inv[j]);
+				j++;
+			}
 		}
-		fprintf(f,"-1\n");
-		i++;
+			fprintf(f,"-1\n");
+			i++;
 	}
 	fclose(f);
 	return 0;

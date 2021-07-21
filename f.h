@@ -1,6 +1,9 @@
 #include "stats.h"
 #define _FLUSH while(getchar()!='\n');
 
+
+void help();
+int shell(perso**);
 int scan(char*);
 void ask(perso*, int);
 void clear();
