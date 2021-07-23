@@ -1,24 +1,27 @@
 dep = f.c stats.c save.c
-ob = f.o stats.o save.o
-f = obj/
+f = bin/
 
-all: obj main
+all: clean dir win lin
 
-main:
+main: dir win
 	@echo Building...
-	cc main.c obj/*
+	cc -o bin/jdr.linux main.c $(dep)
 	@echo Done!
 
-obj:
-	cc -c $(dep)
-	mkdir $(f)
-	mv *.o $(f)
-	@echo object file ready!
+lin:
+	gcc -o bin/jdr.linux main.c $(dep)
 
-debug: obj
+dir:
+	@mkdir $(f)
+	@echo folder made
+
+debug: dir obj
 	@echo Building...
-	cc -g main.c obj/*
+	cc -o bin/jdr.linux -g main.c obj/*
 	@echo Done!
+
+win: dir
+	i686-w64-mingw32-gcc -o bin/jdr.exe main.c $(dep)
 
 clean:
 	rm -rf $(f) a.out
