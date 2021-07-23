@@ -136,17 +136,21 @@ void inv_add(perso* t){
 void inv_rem(perso* t){
 	char* item = malloc(100);
 	printf("item to del : ");fgets(item,100,stdin);
+	item[strlen(item)-1] = '\0';
+	printf("-> %s\n",item);
 	int i = 0;
-	while(t->inv[i]!=NULL){
-		if(t->inv[i] == item){
-			i = 0;
+	while(t->inv[i]!=0){ // loop until finding the item or not
+		if(strcmp(t->inv[i],item) == 0){ // if item found
 			while(t->inv[i]!=0){ // swich the indexes to remove the perso
 				t->inv[i] = t->inv[i+1];
 				i++;
 			}
+			free(item);
 			return;
 		}
+		i++;
 	}
+	free(item);
 }
 
 // show the inventory
