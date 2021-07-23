@@ -26,7 +26,8 @@ contient la plupart des fonctions pour la gestions des perso et des combats
 - [ ] gérer les attaques/défenses/autres
 
 # To compile
-`make all`   for common usage <br/>
-`make obj`   to compile dependences to object files <br/>
-`make debug` to compile with debug informations <br/>
-`make clean` clear the binary and object files <br/>
+`make all`   for common usage (compile for linux and windows)<br/>
+`make lin` to compile for linux only<br/>
+`make win` to compile for windows<br/>
+`make debug` to compile with debug informations<br/>
+`make clean` clear the binary and object files<br/>
