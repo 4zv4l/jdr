@@ -171,13 +171,17 @@ void invent(perso** t){
 	}
 	while(n == -1){
 		n = askName(t, "inventory of who : ");
+		if(n == -3){
+			return;
+		}
 	}
 	if(t[n]->inv == 0){
 		inv_init(t[n]);
 	}
 	//inv_show(t[n]);
 	char* choice = malloc(100);
-	printf("add/rem/show : "); fgets(choice,100,stdin);
+	inv_show(t[n]);
+	printf("add/rem : "); fgets(choice,100,stdin);
 	choice[strlen(choice)-1] = '\0';
 	if(strcmp(choice,"add") == 0){
 		printf("add\n");
@@ -185,8 +189,6 @@ void invent(perso** t){
 	} else if(strcmp(choice,"rem") == 0){
 		printf("rem\n");
 		inv_rem(t[n]);
-	} else if(strcmp(choice,"show") == 0){
-		inv_show(t[n]);
 	} else {
 		printf("none\n");
 	}
