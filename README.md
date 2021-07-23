@@ -18,7 +18,7 @@ contient la plupart des fonctions pour la gestions des perso et des combats
 - [x] afficher les perso
 - [x] créer les structures
 - [x] changer l'odre de la team
-- [ ] retirer item de l'inventaire 
+- [x] retirer item de l'inventaire 
 - [x] sauvegarde avec inventaire
 - [ ] ajouter des mobs
 - [ ] mettre les bonnes caractéristiques aux mobs
