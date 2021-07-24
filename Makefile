@@ -8,20 +8,20 @@ main: dir win
 	cc -o bin/jdr.linux main.c $(dep)
 	@echo Done!
 
-lin:
-	gcc -o bin/jdr.linux main.c $(dep)
-
 dir:
 	@mkdir $(f)
 	@echo folder made
+
+lin: dir
+	gcc -o bin/jdr.linux main.c $(dep)
+
+win: dir
+	i686-w64-mingw32-gcc -o bin/jdr.exe main.c $(dep)
 
 debug: dir obj
 	@echo Building...
 	cc -o bin/jdr.linux -g main.c obj/*
 	@echo Done!
-
-win: dir
-	i686-w64-mingw32-gcc -o bin/jdr.exe main.c $(dep)
 
 clean:
 	rm -rf $(f) a.out
