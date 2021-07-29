@@ -50,11 +50,11 @@ typedef struct animal{
 
 // mobs intel
 static intel intel_mobs[] = {
-    /* nom      pv     armure     attaque       mana*/
-    {"golblin", 5,     5,         5,            5},
-    {"cyclope", 15,    10,        10,           2},
-    {"elf",     10,    8,         10,           10},
-    {"griffon", 10,    8,         9,            11},
+    /* nom         pv   armure    mana   arme*/
+    {"elfe",       35,     15,     35,      5},
+    {"nain",      45,      20,     25,      2},
+    {"elfe noir", 30,      25,     40,     1},  
+    {"humain",    40,      10,     30,     3},
     // ajouter
 	{0,0,0,0,0},
 };
