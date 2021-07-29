@@ -25,20 +25,28 @@ typedef struct intel{
 	
 } intel;
 
-// stats semi semi
-typedef struct semi{
+// stats semi intel
+typedef struct semi_A{
 	const char* nom;
 	int maxPV;
 	int armure;
-	int degat;
-} semi;
+	int mana;
+	int arme;
+} semi_A;
 
-// stats semi idiot
-typedef struct idiot{
+typedef struct semi_B{
 	const char* nom;
 	int maxPV;
-	int degat;
-} idiot;
+	int armure;
+	int mana;
+} semi_B;
+
+// stats animal
+typedef struct animal{
+	const char* nom;
+	int maxPV;
+	int armure;
+} animal;
 
 // mobs intel
 static intel intel_mobs[] = {
