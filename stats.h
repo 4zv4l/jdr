@@ -10,8 +10,8 @@ typedef struct perso{
 	char* nom;
 	int maxPV;
 	int armure;
-	int degat;
 	int mana;
+	int arme;
 	char** inv;
 } perso;
 
@@ -20,8 +20,9 @@ typedef struct intel{
 	const char* nom;
 	int maxPV;
 	int armure;
-	int degat;
 	int mana;
+	int arme;
+	
 } intel;
 
 // stats semi semi
