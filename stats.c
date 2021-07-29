@@ -117,7 +117,7 @@ int inv_last(char** i){
 // initialise the inventory with INV_SIZE of storage
 void inv_init(perso* t){
 	t->inv = malloc(sizeof(char*)*INV_SIZE);
-	for(int i = 0; i<INV_SIZE;i++){
+	for(int i = 0; i<INV_SIZE;i++){ // init all to 0
 		t->inv[i] = 0;
 	}
 	printf("inventory created!\nsize : %d\n",INV_SIZE);
@@ -125,23 +125,22 @@ void inv_init(perso* t){
 
 // add an item in the inventory
 void inv_add(perso* t){
-	char* item = malloc(100);
-	printf("item to add : ");fgets(item,100,stdin);
+	char* item = malloc(INV_SIZE);
+	printf("item to add : ");fgets(item,INV_SIZE,stdin);
 	item[strlen(item)-1] = '\0';
 	t->inv[inv_last(t->inv)] = item;
-	//free(item);
 }
 
 // remove an item from the inventory
 void inv_rem(perso* t){
-	char* item = malloc(100);
-	printf("item to del : ");fgets(item,100,stdin);
+	char* item = malloc(INV_SIZE);
+	printf("item to del : ");fgets(item,INV_SIZE,stdin);
 	item[strlen(item)-1] = '\0';
 	printf("-> %s\n",item);
 	int i = 0;
 	while(t->inv[i]!=0){ // loop until finding the item or not
 		if(strcmp(t->inv[i],item) == 0){ // if item found
-			while(t->inv[i]!=0){ // swich the indexes to remove the perso
+			while(t->inv[i]!=0){ // swich the indexes to remove the item
 				t->inv[i] = t->inv[i+1];
 				i++;
 			}
@@ -167,7 +166,7 @@ void inv_show(perso* t){
 
 // handle the inventory add/rem/show
 void invent(perso** t){
-	show_team(t);
+	show_team(t); // show the team before asking for the name
 	int n;
 	n = askName(t, "inventory of who : ");
 	if(n == -3){
@@ -179,12 +178,11 @@ void invent(perso** t){
 			return;
 		}
 	}
-	if(t[n]->inv == 0){
+	if(t[n]->inv == 0){ // if the inventory of the character isn't created then create it
 		inv_init(t[n]);
 	}
-	//inv_show(t[n]);
 	char* choice = malloc(100);
-	inv_show(t[n]);
+	inv_show(t[n]); // show the inventory before asking
 	printf("add/rem : "); fgets(choice,100,stdin);
 	choice[strlen(choice)-1] = '\0';
 	if(strcmp(choice,"add") == 0){
@@ -194,7 +192,7 @@ void invent(perso** t){
 		printf("rem\n");
 		inv_rem(t[n]);
 	} else {
-		printf("none\n");
+		printf("nothing to do\n");
 	}
 	free(choice);
 }

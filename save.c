@@ -81,7 +81,7 @@ int saveForLater(perso** t){
 				j++;
 			}
 		}
-			fprintf(f,"-1\n");
+			fprintf(f,"-1\n"); // to show it's the end of the inventory save
 			i++;
 	}
 	fclose(f);

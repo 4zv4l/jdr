@@ -48,8 +48,8 @@ int shell(perso** t){
 		if(!strcmp(cmd,"h")){
 			help();
 		} else if(!strcmp(cmd,"add")){
-			if(t == 0){
-				t = init();
+			if(t == 0){ // si la team n'existe pas encore
+				t = init(); // creer la team
 			}else{
 				add(t);
 			}
@@ -114,7 +114,7 @@ int scan(char* s){
 
 // demande les infos d'un perso
 //
-// prend comme argument un pointeur vers un perso
+// prend comme argument un pointeur vers un perso et son index
 void ask(perso *p, int i){
 	printf("perso %d\t:\n",i+1);
 	printf("\tnom    : ");
@@ -260,7 +260,9 @@ intel** init_battle(int diff){
 //
 // who is to know who attaque who
 //
-// 1 -> p; 0 -> i
+// 1 -> player attack intel
+//
+// 0 -> intel attack player
 int attaque(perso* p, intel* i,int who){
 	if(p->maxPV == 0 || i->maxPV == 0){
 		return -1;

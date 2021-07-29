@@ -9,14 +9,16 @@ main: dir win
 	@echo Done!
 
 dir:
-	@mkdir $(f)
+	mkdir -p $(f)
 	@echo folder made
 
 lin: dir
 	gcc -o bin/jdr.linux main.c $(dep)
+	@echo "-> jdr.linux is ready! waiting for you in bin/jdr.linux"
 
 win: dir
 	i686-w64-mingw32-gcc -o bin/jdr.exe main.c $(dep)
+	@echo "-> jdr.exe is ready! waiting for you in bin/jdr.exe"
 
 debug: dir obj
 	@echo Building...
@@ -24,5 +26,5 @@ debug: dir obj
 	@echo Done!
 
 clean:
-	rm -rf $(f) a.out
-	@echo project cleaned
+	rm -rf $(f)
+	@echo "-> project cleaned"
