@@ -11,6 +11,11 @@ int main(int argc, char** argv){
 	if(argc >= 2){
 		team = loadForNow(argv[1]);
 	}
+	char g
+	printf("Bonjour! L'assistant de combat est pret, voulez vous commencer?\n 1: oui\n 2: non\n");
+	scanf("%c", &g);
+	if (g!=1)
+		break;
 	shell(team);
 	free(team);
 	return 0;
