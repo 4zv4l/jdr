@@ -38,6 +38,7 @@ void help(){
 
 // allow the user to type command to interact with the program
 int shell(perso** t){
+	printf("Bien! Dans ce cas, commençons!");
 	char* cmd = malloc(_NAME_LENGHT);
 	while(strcmp(cmd,"exit")){
 		printf("(h for help)> ");
