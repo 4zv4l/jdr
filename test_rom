@@ -133,14 +133,9 @@ int combat (attaquant, défenseur)
         return 1;//le tour s'est passé normalement
       }
       case else:
-        printf("erreur, ce n'est pas une option valable");//ce serait bien de pourvoir revenir au début du tour à ce moment là mais je vois pas comment faire mnt, p-e en mettant une boucle au moment de rentrer la valeur
+        printf("erreur, ce n'est pas une option valable");//ce serait bien de pourvoir revenir au début du tour à ce moment là mais j'ai fait ça au tout début ai j'ai un peu pas eu le courage de mettre genre un do while ou une boucle
         break;
-      
-      
-      
-      
-      
-     
-char type_adversaire(adversaire)
+
+char type_adversaire(adversaire) //renvoie une valeur en fonction du type d'adversaire pour définir ses possibilités
 {
-  
+ 
