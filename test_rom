@@ -1,0 +1,46 @@
+char type_adversaire(adversaire);
+
+
+combat (attaquant, défenseur)
+{
+  int a, b = 0;
+  if(type_adversaire == joueur)
+  {
+    printf("Que souhaitez-vous faire? \n1. attaque physique \n2. attaque magique \n3. autre\n");
+    scanf();//je sais plus ce qu'il faut mettre dans les scanf mais il faudrait placer la valeur entrée dans la variable a
+    switch(a)
+      case 1:
+        do
+        {
+          printf("Faites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...\n");
+          scanf();//mettre la valeur dans b
+          }
+        while (b !=1 || b != 2)
+        {
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p \nFaites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...");
+          scanf();//mettre la valeur dans b
+        }
+        if (b == 2)
+        {
+          printf("Pas de chance... C'est au suivant de jouer maintenant!\n");
+          break;
+        }
+        printf("Bien, faites maintenant un lancé de chance pour définir les choix de l'adversaire.\n");
+        
+          
+      case 2:
+        
+      case 3:
+        
+      case else:
+        printf("erreur, ce n'est pas une option valable");//ce serait bien de pourvoir revenir au début du tour à ce moment là mais je vois pas comment faire mnt, p-e en mettant une boucle au moment de rentrer la valeur
+        break;
+      
+      
+      
+      
+      
+     
+char type_adversaire(adversaire)
+{
+  
