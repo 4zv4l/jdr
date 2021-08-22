@@ -1,37 +1,137 @@
 char type_adversaire(adversaire);
 
 
-combat (attaquant, défenseur)
+int combat (attaquant, défenseur)
 {
-  int a, b = 0;
+  int a, b = 0, c = 0, d = 0, e = 0, m;
   if(type_adversaire == joueur)
   {
     printf("Que souhaitez-vous faire? \n1. attaque physique \n2. attaque magique \n3. autre\n");
     scanf();//je sais plus ce qu'il faut mettre dans les scanf mais il faudrait placer la valeur entrée dans la variable a
     switch(a)
-      case 1:
+      case 1://attaque physique
+      {
         do
         {
           printf("Faites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...\n");
           scanf();//mettre la valeur dans b
-          }
+        }
         while (b !=1 || b != 2)
         {
-          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p \nFaites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...");
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...");
           scanf();//mettre la valeur dans b
         }
-        if (b == 2)
+        if (b == 2)//force = FALSE
         {
           printf("Pas de chance... C'est au suivant de jouer maintenant!\n");
-          break;
+          return 1; //le tour s'est déroulé normalement
         }
-        printf("Bien, faites maintenant un lancé de chance pour définir les choix de l'adversaire.\n");
+         do //force == TRUE
+        {
+          printf("Bien, faites maintenant un lancé de chance pour définir les choix de l'adversaire.\nEst-il réussit? \n1. Oui! \nNon...\n");
+          scanf();//mettre la valeur dans c
+        }
+        while (c !=1 || c != 2)
+        {
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de chance pour définir les choix de l'adversaire.\nEst-il réussit? \n1. Oui! \nNon...\n");
+          scanf();//mettre la valeur dans c
+        }
+        if (c == 1) //chance == TRUE
+        {
+          m = type_adversaire(ennemis)
+          if (m == intel || m == semi-intel_A) //cas ou l'ennemis est capable de parer le coup
+          {
+            do
+            {
+             printf("L'ennemis peut tenter une parade (jet de force à -30). \n Est-ce une réussite? \n1. Oui... \nNon!\n");
+             scanf();//mettre dans d
+            }
+            while (d !=1 || d != 2)
+           {
+             printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de parade (force à -30).\nEst-il réussit? \n1. Oui! \nNon...\n");
+             scanf();//mettre la valeur dans d
+           }
+           if (d == 1) //parade == TRUE
+           {
+            printf("Mince... Bon peut-être un autre fois... \nAu suivant!\n");
+            return 1;//le tour s'est déroulé normalement
+           } 
+           printf("Bien joué! Lancez les jets de dégats pour voir à quel point vous lui avez fait mal, et puis, au suivant!\n"); //parade == FALSE
+           return 1;//le tour s'est déroulé normalement
+          }
+          else //cas ou l'ennemis ne peut pas parer le coup
+          { 
+            printf("l'ennemis ne peut pas parer! C'est le moment de frapper! Lancez les jets de dégats pour voir à quel point vous lui avez fait mal, et puis, au suivant!\n");
+           return 1;//le tour s'est déroulé normalement
+          }
+         }//fin du cas ou la chance est OK
+         do //cas ou la chance n'est pas OK
+         {
+          printf("L'ennemis a une chance de pouvoir esquiver... Tente-t'il sa chance? \n1. Oui \n2. Non\n");
+          scanf();//mettre dans d
+         }
+         while (d !=1 || d != 2)
+         {
+           printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, l'ennemis tente-t'il d'esquiver?.\n1. Oui \nNon\n");
+           scanf();//mettre la valeur dans d
+         }
+         if (d == 1) //l'ennemis essaye d'esquiver
+         {
+          do
+          {
+           printf("L'ennemis tente d'esquiver, faites un lancé d'agilité pour voir s'il réussit. Alors? \n1. Il esquive... \n2. Il échoue!);
+           scanf();//mettre dans e
+          }
+          while (e != 1 || e != 2)
+          {
+           printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, l'ennemis réussit-il son esquive?.\n1. Oui \nNon\n");
+           scanf();//mettre la valeur dans e
+          }
+          if (e == 1)
+          {
+            printf("l'ennemis esquive le coup... Peut-être un autre fois? \nAu suivant!\n");
+            return 1;//le tour s'est déroulé normalement
+          }
+          printf("l'ennemis rate son esquive! c'est le moment de frapper! Lancez les jets de dégats pour voir à quel point vous lui avez fait mal, et puis, au suivant!\n");
+          return 1;//le tour s'est déroulé normalement"
+          }
+         }
+         printf("L'ennemis ne veut pas esquiver donc.\n");
+         m = type_adversaire(ennemis)
+          if (m == intel || m == semi-intel_A) //cas ou l'ennemis est capable de parer le coup
+          {
+            do
+            {
+             printf("L'ennemis peut tenter une parade (jet de force à -30). \n Est-ce une réussite? \n1. Oui... \nNon!\n");
+             scanf();//mettre dans d
+            }
+            while (d !=1 || d != 2)
+           {
+             printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de parade (force à -30).\nEst-il réussit? \n1. Oui! \nNon...\n");
+             scanf();//mettre la valeur dans d
+           }
+           if (d == 1) //parade == TRUE
+           {
+            printf("Mince... Bon peut-être un autre fois... \nAu suivant!\n");
+            return 1;//le tour s'est déroulé normalement
+           } 
+           printf("Bien joué! Lancez les jets de dégats pour voir à quel point vous lui avez fait mal, et puis, au suivant!\n"); //parade == FALSE
+           return 1;//le tour s'est déroulé normalement
+          }
+          else //cas ou l'ennemis ne peut pas parer le coup
+          { 
+           printf("L'ennemis ne peut pas parer! C'est le moment de frapper! Lancez les jets de dégats pour voir à quel point vous lui avez fait mal, et puis, au suivant!\n");
+           return 1;//le tour s'est déroulé normalement
+          }
+         }
+      }        
+      case 2://attaque magique
         
-          
-      case 2:
-        
-      case 3:
-        
+      case 3://autre
+      {
+        printf("Le joueur souhaite donc faire quelque chose de différent. Bien, dans ce cas, c'est au tour du suivant!\n");
+        return 1;//le tour s'est passé normalement
+      }
       case else:
         printf("erreur, ce n'est pas une option valable");//ce serait bien de pourvoir revenir au début du tour à ce moment là mais je vois pas comment faire mnt, p-e en mettant une boucle au moment de rentrer la valeur
         break;
