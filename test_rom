@@ -1,10 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 char type_adversaire(adversaire);
-
 
 int combat (attaquant, défenseur)
 {
@@ -23,7 +20,7 @@ int combat (attaquant, défenseur)
         }
         while (b !=1 || b != 2)
         {
-          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...");
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, faites un lancé de force! \nEst-ce une réussite? \n1. Oui! \n2. Non...\n");
           scanf();//mettre la valeur dans b
         }
         if (b == 2)//force = FALSE
@@ -84,7 +81,7 @@ int combat (attaquant, défenseur)
          {
           do
           {
-           printf("L'ennemis tente d'esquiver, faites un lancé d'agilité pour voir s'il réussit. Alors? \n1. Il esquive... \n2. Il échoue!);
+           printf("L'ennemis tente d'esquiver, faites un lancé d'agilité pour voir s'il réussit. Alors? \n1. Il esquive... \n2. Il échoue!\n");
            scanf();//mettre dans e
           }
           while (e != 1 || e != 2)
@@ -221,10 +218,21 @@ int combat (attaquant, défenseur)
         }
         do
         {
-          printf("Le joueur a-t'il suffisamment bien réussi sa parade que pour contre-attaquer? A-t'il fait un meilleur score de physique que son adversaire? \n1. Oui \n2. Non");
+          printf("Le joueur a-t'il suffisamment bien réussi sa parade que pour contre-attaquer? A-t'il fait un meilleur score de physique que son adversaire? \n1. Oui \n2. Non\n");
           scanf();//mettre dans d
         }
         while (d != 1 || d != 2)
+        {
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, a-t'il fait un meilleur score de physique que son adversaire? \n1. Oui \n2. Non\n");
+          scanf();//mettre dans d
+        }
+        if (d == 2)
+        {
+          printf("Le joueur pare simplement le coup. C'est au suivant de jouer!\n")
+          return 1;//le tour s'est déroulé normalement
+        }
+        printf("Bien joué! Utilisez maintenant l'opportunité que vous avez pour faire mal! Lancez les dégats du joueur pour voir si vous pouvez tuer cet ennemis, et puis au suivant!"\n);
+        return 1;//le tour s'est déroulé normalement
 
 
 char type_adversaire(adversaire) //renvoie une valeur en fonction du type d'adversaire pour définir ses possibilités
