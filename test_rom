@@ -1,14 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
 char type_adversaire(adversaire);
 
 
 int combat (attaquant, défenseur)
 {
   int a, b = 0, c = 0, d = 0, e = 0, m;
-  if(type_adversaire == joueur)
+  if(type_adversaire (attaquant) == joueur)
   {
     printf("Que souhaitez-vous faire? \n1. attaque physique \n2. attaque magique \n3. autre\n");
     scanf();//je sais plus ce qu'il faut mettre dans les scanf mais il faudrait placer la valeur entrée dans la variable a
-    switch(a)
+    switch(a){
       case 1://attaque physique
       {
         do
@@ -132,10 +137,96 @@ int combat (attaquant, défenseur)
         printf("Le joueur souhaite donc faire quelque chose de différent. Bien, dans ce cas, c'est au tour du suivant!\n");
         return 1;//le tour s'est passé normalement
       }
-      case else:
+      default:
+      {
         printf("erreur, ce n'est pas une option valable");//ce serait bien de pourvoir revenir au début du tour à ce moment là mais j'ai fait ça au tout début ai j'ai un peu pas eu le courage de mettre genre un do while ou une boucle
         break;
+      }
+    }
+  if (type_adversaire(attaquant) != joueur)//le joueur est attaqué
+  {
+    do
+    {
+      printf("L'ennemis attaque! Que souhaite-t'il faire? \n1. Attaque physique \n2. Attaque magique \n3. Autre\n");
+      scanf();//mettre dans a
+    }
+    while (a != 1 || a != 2 || a != 3)
+    {
+      printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, que souhaite-t'il faire? \n1. Attaque physique \n2. Attaque magique \n3. Autre\n");
+      scanf();//mettre dans a
+    }
+    switch (a)
+    {
+      case 1:
+      {
+        do
+        {
+          printf("Le joueur est attaqué! Comment veut-il réagir? \n1. Il tente une esquive! \n2. Il tente une parade\n");
+          scanf();//mettre dans b
+        }
+        while (b != 1 || b != 2)
+        {
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, que souhaite-t'il faire? \n1. Une esquive \n2. Une parade\n");
+          scanf();//mettre dans b
+        }
+        if (b == 1)
+        {
+          do
+          {
+            printf("Le joueur tente une esquive, il doit faire un lancé de chance. Réussit-il? \n1. Oui! \n2. Non...\n");
+            scanf();//mettre dans c
+          }
+          while (c != 1 || c != 2)
+          {
+            printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, a-t'il réussi son lancé de chance? \n1. Oui \n2. Non\n");
+            scanf();//mettre dans c
+          }
+          if (c == 1)
+          {
+            do
+            {
+              printf("Le joueur a réussi son lancé de chance. Il a l'opportunité d'esquiver. Faites un lancé d'agilité. Réussit-il? \n1. Oui! \n2. Non...\n");
+              scanf();//mettre dans d
+            }
+            while (d != 1 || d != 2)
+            {
+              printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, a-t'il réussit son lancé d'agilité? \n1. Oui \n2. Non\n");
+              scanf();//mettre dans d
+            }
+            if (d == 1)
+            {
+              printf("Le joueur parvient à esquiver le coup! C'est donc au tour du suivant.\n");
+              return 1;//le tour s'est déroulé normalement
+            }
+            printf("Les joueur ne parvient pas à esquiver le coup... Ca risque de faire mal... Lancez les dégats pris par le joueur et puis, au suivant.\n");
+            return 1;//le tour s'est déroulé normalement
+          }
+          printf("Le joueur n'est pas parvenu à esquiver... Ca risque de piquer un peu... Lancez les dégats pris par le joueur et puis, au suivant.\n");
+          return 1;//le tour s'est déroulé normalement
+        }
+        do
+        {
+          printf"("Le joueur tente une parade, il doit faire un lancé de force à -30. Réussit-il? \n1. Oui! \n2. Non...\n");
+          scanf();//mettre dans c
+        }
+        while (c != 1 || c != 2)
+        {
+          printf("Erreur, la valeur sélectionnée est incorrecte... Recommencez s.v.p, a-t'il réussi son lancé de force à -30? \n1. Oui \n2. Non\n");
+          scanf();//mettre dans c
+        }
+        if (c == 2)
+        {
+          printf("Le joueur n'a pas réussi sa parade... Mince! Lancez les dégats qu'il va prendre et puis, au tour du suivant.\n");
+          return 1;//le tour s'est déroulé normalement
+        }
+        do
+        {
+          printf("Le joueur a-t'il suffisamment bien réussi sa parade que pour contre-attaquer? A-t'il fait un meilleur score de physique que son adversaire? \n1. Oui \n2. Non");
+          scanf();//mettre dans d
+        }
+        while (d != 1 || d != 2)
+
 
 char type_adversaire(adversaire) //renvoie une valeur en fonction du type d'adversaire pour définir ses possibilités
 {
- 
+}
