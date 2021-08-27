@@ -20,9 +20,9 @@ win: dir
 	i686-w64-mingw32-gcc -o bin/jdr.exe main.c $(dep)
 	@echo "-> jdr.exe is ready! waiting for you in bin/jdr.exe"
 
-debug: dir obj
+debug: dir
 	@echo Building...
-	cc -o bin/jdr.linux -g main.c obj/*
+	gcc -o bin/jdr.linux -g main.c $(dep)
 	@echo Done!
 
 clean:

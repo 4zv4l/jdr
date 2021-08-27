@@ -301,6 +301,7 @@ void player_turn(perso** t, int i, intel** e){
 		switch (n) {
 		case 1:
 			printf("Go go go %s\n",t[i]->nom);
+			printf("ROLL the DICE!!!!\n");
 			n = scan("which enemi : ");
 			while(n < 0 || n > size_enemis-1){
 				n = scan("which enemi : ");
