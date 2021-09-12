@@ -116,10 +116,13 @@ int inv_last(char** i){
 
 // initialise the inventory with INV_SIZE of storage
 void inv_init(perso* t){
+	t->inv = calloc(sizeof(char*)*INV_SIZE,sizeof(char*));
+	/*
 	t->inv = malloc(sizeof(char*)*INV_SIZE);
 	for(int i = 0; i<INV_SIZE;i++){ // init all to 0
 		t->inv[i] = 0;
 	}
+	*/
 	printf("inventory created!\nsize : %d\n",INV_SIZE);
 }
 
