@@ -181,7 +181,7 @@ void rem(perso** t){
 //
 // return -1 if not found
 //
-// return -3 if \n
+// return -3 if \n or no one
 int askName(perso** t, char* s){
 	if(t == 0){
 		return -3;
@@ -348,7 +348,7 @@ int enemisDown(intel** e){
 void team_round(perso** t, intel** e){
 	clear();
 	show_team(t);
-	printf("VS\n");
+	printf("VS");
 	show_enemis(e);
 	int i,n;
 	while(enemisDown(e)!=0){
